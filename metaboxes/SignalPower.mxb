@@ -1,0 +1,375 @@
+<OpenViBE-Scenario>
+	<FormatVersion>2</FormatVersion>
+	<Creator>OpenViBE Designer</Creator>
+	<CreatorVersion>2.2.0</CreatorVersion>
+	<Settings>
+		<Setting>
+			<Identifier>(0x0018e08b, 0xf11dcba1)</Identifier>
+			<TypeIdentifier>(0x512a166f, 0x5c3ef83f)</TypeIdentifier>
+			<Name>Epoch duration (in sec)</Name>
+			<DefaultValue>1</DefaultValue>
+			<Value>1</Value>
+		</Setting>
+		<Setting>
+			<Identifier>(0x002ae40c, 0xd8894cdd)</Identifier>
+			<TypeIdentifier>(0x512a166f, 0x5c3ef83f)</TypeIdentifier>
+			<Name>Epoch intervals (in sec)</Name>
+			<DefaultValue>0.0625</DefaultValue>
+			<Value>0.0625</Value>
+		</Setting>
+		<Setting>
+			<Identifier>(0x006f3d6a, 0x973865d9)</Identifier>
+			<TypeIdentifier>(0x007deef9, 0x2f3e95c6)</TypeIdentifier>
+			<Name>Logarithm</Name>
+			<DefaultValue>1</DefaultValue>
+			<Value>1</Value>
+		</Setting>
+	</Settings>
+	<Inputs>
+		<Input>
+			<Identifier>(0x002cdd81, 0x01fe7e71)</Identifier>
+			<TypeIdentifier>(0x5ba36127, 0x195feae1)</TypeIdentifier>
+			<Name>Input Signal</Name>
+			<LinkedBoxIdentifier>(0x00004dbb, 0x000050ad)</LinkedBoxIdentifier>
+			<LinkedBoxInputIndex>0</LinkedBoxInputIndex>
+		</Input>
+	</Inputs>
+	<Outputs>
+		<Output>
+			<Identifier>(0x00559a45, 0xd1a842a9)</Identifier>
+			<TypeIdentifier>(0x5ba36127, 0x195feae1)</TypeIdentifier>
+			<Name>Output Power</Name>
+			<LinkedBoxIdentifier>(0x00006f8b, 0x00003754)</LinkedBoxIdentifier>
+			<LinkedBoxOutputIndex>0</LinkedBoxOutputIndex>
+		</Output>
+	</Outputs>
+	<Boxes>
+		<Box>
+			<Identifier>(0x000048f2, 0x0000366e)</Identifier>
+			<Name>Signal average</Name>
+			<AlgorithmClassIdentifier>(0x00642c4d, 0x5df7e50a)</AlgorithmClassIdentifier>
+			<Inputs>
+				<Input>
+					<TypeIdentifier>(0x5ba36127, 0x195feae1)</TypeIdentifier>
+					<Name>Input signal</Name>
+				</Input>
+			</Inputs>
+			<Outputs>
+				<Output>
+					<TypeIdentifier>(0x5ba36127, 0x195feae1)</TypeIdentifier>
+					<Name>Filtered signal</Name>
+				</Output>
+			</Outputs>
+			<Attributes>
+				<Attribute>
+					<Identifier>(0x1fa7a38f, 0x54edbe0b)</Identifier>
+					<Value>400</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0x207c9054, 0x3c841b63)</Identifier>
+					<Value>752</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0x4e7b798a, 0x183beafb)</Identifier>
+					<Value>(0xc5ff4187, 0xffc5f432)</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0xc80ce8af, 0xf699f813)</Identifier>
+					<Value>1</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0xcfad85b0, 0x7c6d841c)</Identifier>
+					<Value>1</Value>
+				</Attribute>
+			</Attributes>
+		</Box>
+		<Box>
+			<Identifier>(0x00004920, 0x000006d0)</Identifier>
+			<Name>x²</Name>
+			<AlgorithmClassIdentifier>(0x00e26fa1, 0x1dbab1b2)</AlgorithmClassIdentifier>
+			<Inputs>
+				<Input>
+					<TypeIdentifier>(0x5ba36127, 0x195feae1)</TypeIdentifier>
+					<Name>Input - A</Name>
+				</Input>
+			</Inputs>
+			<Outputs>
+				<Output>
+					<TypeIdentifier>(0x5ba36127, 0x195feae1)</TypeIdentifier>
+					<Name>Output</Name>
+				</Output>
+			</Outputs>
+			<Settings>
+				<Setting>
+					<TypeIdentifier>(0x79a9edeb, 0x245d83fc)</TypeIdentifier>
+					<Name>Equation</Name>
+					<DefaultValue>x</DefaultValue>
+					<Value>x*x</Value>
+					<Modifiability>false</Modifiability>
+				</Setting>
+			</Settings>
+			<Attributes>
+				<Attribute>
+					<Identifier>(0x1fa7a38f, 0x54edbe0b)</Identifier>
+					<Value>336</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0x207c9054, 0x3c841b63)</Identifier>
+					<Value>752</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0x30a4e5c9, 0x83502953)</Identifier>
+					<Value></Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0x4e7b798a, 0x183beafb)</Identifier>
+					<Value>(0x21889dc4, 0x1126497e)</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0x527ad68d, 0x16d746a0)</Identifier>
+					<Value></Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0xc80ce8af, 0xf699f813)</Identifier>
+					<Value>1</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0xce18836a, 0x9c0eb403)</Identifier>
+					<Value>1</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0xcfad85b0, 0x7c6d841c)</Identifier>
+					<Value>1</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0xfba64161, 0x65304e21)</Identifier>
+					<Value></Value>
+				</Attribute>
+			</Attributes>
+		</Box>
+		<Box>
+			<Identifier>(0x00004dbb, 0x000050ad)</Identifier>
+			<Name>Time based epoching</Name>
+			<AlgorithmClassIdentifier>(0x00777fa0, 0x5dc3f560)</AlgorithmClassIdentifier>
+			<Inputs>
+				<Input>
+					<TypeIdentifier>(0x5ba36127, 0x195feae1)</TypeIdentifier>
+					<Name>Input signal</Name>
+				</Input>
+			</Inputs>
+			<Outputs>
+				<Output>
+					<TypeIdentifier>(0x5ba36127, 0x195feae1)</TypeIdentifier>
+					<Name>Epoched signal</Name>
+				</Output>
+			</Outputs>
+			<Settings>
+				<Setting>
+					<TypeIdentifier>(0x512a166f, 0x5c3ef83f)</TypeIdentifier>
+					<Name>Epoch duration (in sec)</Name>
+					<DefaultValue>1</DefaultValue>
+					<Value>$var{Epoch duration (in sec)}</Value>
+					<Modifiability>false</Modifiability>
+				</Setting>
+				<Setting>
+					<TypeIdentifier>(0x512a166f, 0x5c3ef83f)</TypeIdentifier>
+					<Name>Epoch intervals (in sec)</Name>
+					<DefaultValue>0.5</DefaultValue>
+					<Value>$var{Epoch intervals (in sec)}</Value>
+					<Modifiability>false</Modifiability>
+				</Setting>
+			</Settings>
+			<Attributes>
+				<Attribute>
+					<Identifier>(0x1fa7a38f, 0x54edbe0b)</Identifier>
+					<Value>272</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0x207c9054, 0x3c841b63)</Identifier>
+					<Value>752</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0x4e7b798a, 0x183beafb)</Identifier>
+					<Value>(0xc5ff41e9, 0xccc59a01)</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0xc80ce8af, 0xf699f813)</Identifier>
+					<Value>1</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0xce18836a, 0x9c0eb403)</Identifier>
+					<Value>2</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0xcfad85b0, 0x7c6d841c)</Identifier>
+					<Value>1</Value>
+				</Attribute>
+			</Attributes>
+		</Box>
+		<Box>
+			<Identifier>(0x00006f8b, 0x00003754)</Identifier>
+			<Name>log(x+1)</Name>
+			<AlgorithmClassIdentifier>(0x00e26fa1, 0x1dbab1b2)</AlgorithmClassIdentifier>
+			<Inputs>
+				<Input>
+					<TypeIdentifier>(0x5ba36127, 0x195feae1)</TypeIdentifier>
+					<Name>Input - A</Name>
+				</Input>
+			</Inputs>
+			<Outputs>
+				<Output>
+					<TypeIdentifier>(0x5ba36127, 0x195feae1)</TypeIdentifier>
+					<Name>Output</Name>
+				</Output>
+			</Outputs>
+			<Settings>
+				<Setting>
+					<TypeIdentifier>(0x79a9edeb, 0x245d83fc)</TypeIdentifier>
+					<Name>Equation</Name>
+					<DefaultValue>x</DefaultValue>
+					<Value>($var{Logarithm}==0) ? x : log(x+1)</Value>
+					<Modifiability>false</Modifiability>
+				</Setting>
+			</Settings>
+			<Attributes>
+				<Attribute>
+					<Identifier>(0x1fa7a38f, 0x54edbe0b)</Identifier>
+					<Value>464</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0x207c9054, 0x3c841b63)</Identifier>
+					<Value>752</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0x30a4e5c9, 0x83502953)</Identifier>
+					<Value></Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0x4e7b798a, 0x183beafb)</Identifier>
+					<Value>(0x21889dc4, 0x1126497e)</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0x527ad68d, 0x16d746a0)</Identifier>
+					<Value></Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0xc80ce8af, 0xf699f813)</Identifier>
+					<Value>1</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0xce18836a, 0x9c0eb403)</Identifier>
+					<Value>1</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0xcfad85b0, 0x7c6d841c)</Identifier>
+					<Value>1</Value>
+				</Attribute>
+				<Attribute>
+					<Identifier>(0xfba64161, 0x65304e21)</Identifier>
+					<Value></Value>
+				</Attribute>
+			</Attributes>
+		</Box>
+	</Boxes>
+	<Links>
+		<Link>
+			<Identifier>(0x00003fd2, 0x00005d4e)</Identifier>
+			<Source>
+				<BoxIdentifier>(0x000048f2, 0x0000366e)</BoxIdentifier>
+				<BoxOutputIndex>0</BoxOutputIndex>
+			</Source>
+			<Target>
+				<BoxIdentifier>(0x00006f8b, 0x00003754)</BoxIdentifier>
+				<BoxInputIndex>0</BoxInputIndex>
+			</Target>
+		</Link>
+		<Link>
+			<Identifier>(0x00004e61, 0x0000711f)</Identifier>
+			<Source>
+				<BoxIdentifier>(0x00004dbb, 0x000050ad)</BoxIdentifier>
+				<BoxOutputIndex>0</BoxOutputIndex>
+			</Source>
+			<Target>
+				<BoxIdentifier>(0x00004920, 0x000006d0)</BoxIdentifier>
+				<BoxInputIndex>0</BoxInputIndex>
+			</Target>
+		</Link>
+		<Link>
+			<Identifier>(0x00007f8c, 0x00005b40)</Identifier>
+			<Source>
+				<BoxIdentifier>(0x00004920, 0x000006d0)</BoxIdentifier>
+				<BoxOutputIndex>0</BoxOutputIndex>
+			</Source>
+			<Target>
+				<BoxIdentifier>(0x000048f2, 0x0000366e)</BoxIdentifier>
+				<BoxInputIndex>0</BoxInputIndex>
+			</Target>
+		</Link>
+	</Links>
+	<Comments></Comments>
+	<Metadata>
+		<Entry>
+			<Identifier>(0x00001e2a, 0x000059f3)</Identifier>
+			<Type>(0x3bcce5d2, 0x43f2d968)</Type>
+			<Data>[{"boxIdentifier":"(0xffffffff, 0xffffffff)","childCount":1,"height":1,"identifier":"(0x00005b1f, 0x00003690)","name":"Default window","parentIdentifier":"(0xffffffff, 0xffffffff)","type":1,"width":1},{"boxIdentifier":"(0xffffffff, 0xffffffff)","childCount":1,"identifier":"(0x00000a24, 0x00006dab)","index":0,"name":"Default tab","parentIdentifier":"(0x00005b1f, 0x00003690)","type":2},{"boxIdentifier":"(0xffffffff, 0xffffffff)","childCount":0,"identifier":"(0x00003875, 0x0000076e)","index":0,"name":"Empty","parentIdentifier":"(0x00000a24, 0x00006dab)","type":0}]</Data>
+		</Entry>
+	</Metadata>
+	<Attributes>
+		<Attribute>
+			<Identifier>(0x079d1f09, 0x667c7871)</Identifier>
+			<Value></Value>
+		</Attribute>
+		<Attribute>
+			<Identifier>(0x198dd621, 0xab7f153f)</Identifier>
+			<Value>(0x985ace96, 0xb4727e11)</Value>
+		</Attribute>
+		<Attribute>
+			<Identifier>(0x20c6d158, 0xfe90aadd)</Identifier>
+			<Value>(0x5d5a72ae, 0xd1ee058d)</Value>
+		</Attribute>
+		<Attribute>
+			<Identifier>(0x60bc58ab, 0x7a1b4d83)</Identifier>
+			<Value></Value>
+		</Attribute>
+		<Attribute>
+			<Identifier>(0x790d75b8, 0x3bb90c33)</Identifier>
+			<Value>Thibaut Monseigne</Value>
+		</Attribute>
+		<Attribute>
+			<Identifier>(0x7a3a1558, 0xf12c63c2)</Identifier>
+			<Value>Give the signal power and can make a logarithme.
+1 - Time Based Epoching
+2 - Simple DSP : y = x*x
+3 - Signal Average
+4 - Simple DSP 
+	if (logarithme == 0) 
+		y = x
+	otherwise 
+		y = log(x+1)</Value>
+		</Attribute>
+		<Attribute>
+			<Identifier>(0x84009d7c, 0x3c4e763b)</Identifier>
+			<Value>Give the signal power and can make a logarithme.</Value>
+		</Attribute>
+		<Attribute>
+			<Identifier>(0x8c1fc55b, 0x7b433dc2)</Identifier>
+			<Value>1.0</Value>
+		</Attribute>
+		<Attribute>
+			<Identifier>(0x9f5c4075, 0x4a0d3666)</Identifier>
+			<Value>Signal Power</Value>
+		</Attribute>
+		<Attribute>
+			<Identifier>(0xf36a1567, 0xd13c53da)</Identifier>
+			<Value></Value>
+		</Attribute>
+		<Attribute>
+			<Identifier>(0xf6b2e3fa, 0x7bd43926)</Identifier>
+			<Value>NEUROPERF</Value>
+		</Attribute>
+		<Attribute>
+			<Identifier>(0xf8034a49, 0x8b3f37cc)</Identifier>
+			<Value>Inria</Value>
+		</Attribute>
+	</Attributes>
+</OpenViBE-Scenario>

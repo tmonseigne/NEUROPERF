@@ -16,6 +16,8 @@ COMPILE_FLAGS "-DOVP_Exports -DOVP_Shared -D_LARGEFILE64_SOURCE -D_LARGEFILE_SOU
 
 #INCLUDE_DIRECTORIES("../../../contrib/packages/wavelet2d") # If You need Some directories, you can add it here and
 
+INCLUDE_DIRECTORIES("src")
+
 # ---------------------------------
 # OpenVibe Modules (uncomment usefull package)
 # ---------------------------------
@@ -44,7 +46,8 @@ INCLUDE("FindOpenViBECommon")
 #INCLUDE("FindThirdPartyXerces")
 #INCLUDE("FindThirdPartyWinsock2")
 #INCLUDE("FindThirdPartyFTDI")
-#INCLUDE("FindThirdPartyGTK")
+INCLUDE("FindThirdPartyGTK")
+INCLUDE("FindOpenViBEVisualizationToolkit")
 
 # ---------------------------------
 # Target macros
@@ -62,9 +65,11 @@ RUNTIME DESTINATION ${DIST_BINDIR}
 LIBRARY DESTINATION ${DIST_LIBDIR}
 ARCHIVE DESTINATION ${DIST_LIBDIR})
 
-INSTALL(DIRECTORY bci-tutorials/ DESTINATION ${DIST_DATADIR}/openvibe/scenarios/bci-tutorials/)
-INSTALL(DIRECTORY box-tutorials/ DESTINATION ${DIST_DATADIR}/openvibe/scenarios/box-tutorials/)
-INSTALL(DIRECTORY signals/ DESTINATION ${DIST_DATADIR}/openvibe/scenarios/signals/)
+SET(SUB_DIR_NAME ovp-NEUROPERF)
+
+INSTALL(DIRECTORY bci-tutorials/ DESTINATION ${DIST_DATADIR}/openvibe/scenarios/bci-tutorials/${SUB_DIR_NAME})
+INSTALL(DIRECTORY box-tutorials/ DESTINATION ${DIST_DATADIR}/openvibe/scenarios/box-tutorials/${SUB_DIR_NAME})
+INSTALL(DIRECTORY signals/ DESTINATION ${DIST_DATADIR}/openvibe/scenarios/signals/${SUB_DIR_NAME})
 INSTALL(DIRECTORY metaboxes/ DESTINATION ${DIST_DATADIR}/openvibe/metaboxes/)
 
 # ---------------------------------

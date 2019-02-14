@@ -1,0 +1,8 @@
+<OpenViBE-SettingsOverride>
+	<SettingValue>Butterworth</SettingValue>
+	<SettingValue>Band Pass</SettingValue>
+	<SettingValue>4</SettingValue>
+	<SettingValue>6.25</SettingValue>
+	<SettingValue>9</SettingValue>
+	<SettingValue>0.5</SettingValue>
+</OpenViBE-SettingsOverride>

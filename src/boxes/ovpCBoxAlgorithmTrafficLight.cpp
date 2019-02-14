@@ -53,12 +53,12 @@ bool CBoxAlgorithmTrafficLight::initialize()
 	m_lights.resize(m_steps);
 	for (size_t i = 0; i < m_steps; ++i)
 	{
-		const uint32_t id = uint32_t(i) * 4;													// Identifiant du debut de la couleur
-		m_lights[i].m_Color.red = guint16(colorInterpolated[id + 1] * 655.35);		// Interpolation de 0 a 100 ramene de 0 a 65 535
+		const uint32_t id = uint32_t(i) * 4;									// Identifiant du debut de la couleur
+		m_lights[i].m_Color.red = guint16(colorInterpolated[id + 1] * 655.35);	// Interpolation de 0 a 100 ramene de 0 a 65 535
 		m_lights[i].m_Color.green = guint16(colorInterpolated[id + 2] * 655.35);
 		m_lights[i].m_Color.blue = guint16(colorInterpolated[id + 3] * 655.35);
-		m_lights[i].m_A1 = 0;														// Angle de depart
-		m_lights[i].m_A2 = 23040;													// Angle total (360 * 64 = 23040)
+		m_lights[i].m_A1 = 0;													// Angle de depart
+		m_lights[i].m_A2 = 23040;												// Angle total (360 * 64 = 23040)
 	}
 	m_back.m_Color = COLOR_LIGHTGREY;
 
@@ -94,18 +94,16 @@ bool CBoxAlgorithmTrafficLight::uninitialize()
 //---------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------
-bool CBoxAlgorithmTrafficLight::processInput(uint32_t inputIndex)
+bool CBoxAlgorithmTrafficLight::processInput(uint32_t /*inputIndex*/)
 {
-	(void)inputIndex;
 	getBoxAlgorithmContext()->markAlgorithmAsReadyToProcess();
 	return true;
 }
 
 //---------------------------------------------------------------------------------------------------
-bool CBoxAlgorithmTrafficLight::processClock(CMessageClock& rMessageClock)
+bool CBoxAlgorithmTrafficLight::processClock(CMessageClock& /*rMessageClock*/)
 {
 	// Lance le process une fois par seconde
-	(void)rMessageClock;
 	m_needRedraw = true;
 	getBoxAlgorithmContext()->markAlgorithmAsReadyToProcess();
 	return true;
@@ -140,7 +138,7 @@ bool CBoxAlgorithmTrafficLight::process()
 				}
 			}
 		}
-		draw(step);										// Trace des Lumieres ou redraw si necessaire
+		draw(step);									// Trace des Lumieres ou redraw si necessaire
 	}
 	else { m_needRedraw = true; }					// Si on est pas passé ici, on force le draw pour la prochaine fois
 	return true;
@@ -191,18 +189,18 @@ bool CBoxAlgorithmTrafficLight::computeSize()
 bool CBoxAlgorithmTrafficLight::draw(const size_t step)
 {
 	OV_ERROR_UNLESS_KRF(computeSize(), "Calcul des dimensions invalide", ErrorType::BadProcessing);
-	GdkGC* gc = m_widget->style->fg_gc[gtk_widget_get_state(m_widget)];			// Recuperation de l'environnement
+	GdkGC* gc = m_widget->style->fg_gc[gtk_widget_get_state(m_widget)];	// Recuperation de l'environnement
 	if (m_needRedraw)
 	{
-		gdk_gc_set_rgb_fg_color(gc, &COLOR_BLACK);								// (normalement la couleur est deja noire mais parfois non)
+		gdk_gc_set_rgb_fg_color(gc, &COLOR_BLACK);						// (normalement la couleur est deja noire mais parfois non)
 		gdk_draw_rectangle(m_widget->window, gc, TRUE, 0, 0, m_windowW, m_windowH);	// Reinitialisation
-		drawBackground(gc);														// Trace du fond
-		drawLights(gc, step);													// Trace des Lumieres
-		gdk_gc_set_rgb_fg_color(gc, &COLOR_BLACK);								// Remise a noir de la couleur
+		drawBackground(gc);												// Trace du fond
+		drawLights(gc, step);											// Trace des Lumieres
+		gdk_gc_set_rgb_fg_color(gc, &COLOR_BLACK);						// Remise a noir de la couleur
 		m_needRedraw = false;
 	}
-	else if (m_lastStep != step) { drawLights(gc, step); }						// Modification des lumieres uniquement si necessaire
-	m_lastStep = step;															// Mise a jour de la reference
+	else if (m_lastStep != step) { drawLights(gc, step); }				// Modification des lumieres uniquement si necessaire
+	m_lastStep = step;													// Mise a jour de la reference
 	return true;
 }
 //---------------------------------------------------------------------------------------------------

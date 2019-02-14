@@ -51,7 +51,7 @@ bool CBoxAlgorithmStatsListener::uninitialize()
 //---------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------
-bool CBoxAlgorithmStatsListener::processInput(uint32_t inputIndex)
+bool CBoxAlgorithmStatsListener::processInput(uint32_t /*inputIndex*/)
 {
 	getBoxAlgorithmContext()->markAlgorithmAsReadyToProcess();
 	return true;

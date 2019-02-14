@@ -29,11 +29,11 @@ bool CBoxAlgorithmScoreListener::initialize()
 	const char* LABELS[5] = { "Super Critiques", "Critiques", "Recompenses", "Super Recompenses", "Score" };
 
 	//***** Mise a Jour de la matrice reference *****
-	m_oMatrix->setDimensionCount(2);									// Mise a jour du nombre de dimensions
-	m_oMatrix->setDimensionSize(0, 1);									// Mise a jour du nombre de canaux (un seul)
-	m_oMatrix->setDimensionSize(1, 5);									// Taille du morceau de sortie
-	m_oMatrix->setDimensionLabel(0, 0, "Scores");						// Labels
-	double* buffer = m_oMatrix->getBuffer();							// Buffer
+	m_oMatrix->setDimensionCount(2);						// Mise a jour du nombre de dimensions
+	m_oMatrix->setDimensionSize(0, 1);						// Mise a jour du nombre de canaux (un seul)
+	m_oMatrix->setDimensionSize(1, 5);						// Taille du morceau de sortie
+	m_oMatrix->setDimensionLabel(0, 0, "Scores");			// Labels
+	double* buffer = m_oMatrix->getBuffer();				// Buffer
 	for (uint32_t i = 0; i < 5; ++i)
 	{
 		m_oMatrix->setDimensionLabel(1, i, LABELS[i]);
@@ -70,7 +70,7 @@ bool CBoxAlgorithmScoreListener::uninitialize()
 //---------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------
-bool CBoxAlgorithmScoreListener::processInput(uint32_t ui32InputIndex)
+bool CBoxAlgorithmScoreListener::processInput(uint32_t /*inputIndex*/)
 {
 	getBoxAlgorithmContext()->markAlgorithmAsReadyToProcess();
 	return true;
@@ -133,7 +133,7 @@ bool CBoxAlgorithmScoreListener::process()
 bool CBoxAlgorithmScoreListener::computeRewards(double* buffer, const double value, int& light, int& reward)
 {
 	uint32_t state = 0;													// Recuperation de l'etat
-	if (value == 0.0) { reward = -1;	state = 2; }					// Position neutre & Art�fact
+	if (value == 0.0) { reward = -1;	state = 2; }					// Position neutre & Artefact
 	else if (value < m_thresholds[0]) { state = 0; }					// Position inferieur a min
 	else if (value < m_thresholds[1]) { state = 1; }					// Position entre min et critique
 	else if (value < m_thresholds[2]) { state = 2; }					// Position neutre
@@ -142,7 +142,7 @@ bool CBoxAlgorithmScoreListener::computeRewards(double* buffer, const double val
 
 	const uint64_t T = this->getPlayerContext().getCurrentTime();		// Recuperation du temps
 
-	if (state != m_prevState)											// Si on a un changement d'�tat
+	if (state != m_prevState)											// Si on a un changement d'etat
 	{
 		if ((m_prevState < 2 && 2 < state) || (state < 2 && 2 < m_prevState))	// Si changement (Positif <=> Negatif)
 		{

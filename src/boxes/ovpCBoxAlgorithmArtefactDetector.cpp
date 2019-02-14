@@ -17,10 +17,10 @@ bool CBoxAlgorithmArtefactDetector::initialize()
 	m_oMatrix = m_oSignalCodec.getInputMatrix();
 
 	//***** Mise a Jour de la matrice reference *****
-	m_oMatrix->setDimensionCount(2);									// Mise a jour du nombre de dimensions
-	m_oMatrix->setDimensionSize(0, 1);									// Mise a jour du nombre de canaux (un seul)
-	m_oMatrix->setDimensionSize(1, 1);									// Taille du morceau de sortie vaut 1 (c'est un booleen)
-	m_oMatrix->setDimensionLabel(0, 0, "Artefact");						// Label
+	m_oMatrix->setDimensionCount(2);						// Mise a jour du nombre de dimensions
+	m_oMatrix->setDimensionSize(0, 1);						// Mise a jour du nombre de canaux (un seul)
+	m_oMatrix->setDimensionSize(1, 1);						// Taille du morceau de sortie vaut 1 (c'est un booleen)
+	m_oMatrix->setDimensionLabel(0, 0, "Artefact");			// Label
 
 	//***** Settings *****
 	m_max = FSettingValueAutoCast(*this->getBoxAlgorithmContext(), 0);
@@ -46,9 +46,8 @@ bool CBoxAlgorithmArtefactDetector::uninitialize()
 
 
 //---------------------------------------------------------------------------------------------------
-bool CBoxAlgorithmArtefactDetector::processInput(uint32_t inputIndex)
+bool CBoxAlgorithmArtefactDetector::processInput(uint32_t /*inputIndex*/)
 {
-	(void)inputIndex;
 	getBoxAlgorithmContext()->markAlgorithmAsReadyToProcess();
 	return true;
 }

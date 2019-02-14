@@ -35,7 +35,7 @@ namespace OpenViBEPlugins
 
 			// Codec
 			OpenViBEToolkit::TStreamedMatrixDecoder<CBoxAlgorithmNeuroperfDisplay> m_iMatrixCodec;
-			OpenViBEToolkit::TStimulationDecoder<CBoxAlgorithmNeuroperfDisplay> m_iStimCodec;
+			OpenViBEToolkit::TStimulationDecoder<CBoxAlgorithmNeuroperfDisplay> m_i1StimCodec, m_i2StimCodec;
 			OpenViBE::IMatrix* m_iMatrix = nullptr;				// Input Matrix pointer
 			OpenViBE::IStimulationSet* m_iStimSet = nullptr;	// Input Stimulation Set pointer
 
@@ -44,18 +44,18 @@ namespace OpenViBEPlugins
 			OpenViBEVisualizationToolkit::IVisualizationContext* m_vizuContext = nullptr;
 
 			// Variables (GTK)
-			std::vector<GdkColor> m_cBar;				// Couleurs
-			SRect m_rColor, m_rBar, m_rTime;			// Dimensions
-			gint m_windowW = 0, m_windowH = 0,			// Dimensions Fenetre
-				 m_iBarStep = 0, m_iTimeStep = 0;		// Taille de pas (en pixel)
-			bool m_needRedraw = true;					// Force redraw
+			std::vector<GdkColor> m_cBar;					// Couleurs
+			SRect m_rColor, m_rBar, m_rTime;				// Dimensions
+			gint m_windowW = 0, m_windowH = 0,				// Dimensions Fenetre
+				 m_iBarStep = 0, m_iTimeStep = 0;			// Taille de pas (en pixel)
+			bool m_needRedraw = true;						// Force redraw
 
 			// Variables
-			double m_min = 0, m_max = 0;						// Bornes
-			float m_fBarStep = 0, m_fTimeStep = 0;				// Taille de pas (en flottant)
-			size_t m_gradientSteps = 0, m_lastBarStep = 0,		// Nombre de degrade et position precedente
-				   m_rewardTime = 0;							// Duree recompense
-			uint64_t m_lastTimeStep = 0, m_time = 0;
+			double m_min = 0, m_max = 0;					// Bornes
+			float m_fBarStep = 0, m_fTimeStep = 0;			// Taille de pas (en flottant)
+			size_t m_gradientSteps = 0, m_lastBarStep = 0;	// Nombre de degrade et position precedente
+			gint m_rewardTime = 0;							// Duree recompense
+			uint64_t m_lastTimeStep = 0, m_time = 0, m_startTime = 0;
 			std::vector<std::pair<bool, uint64_t>> m_rewards;
 
 			// Fonctions
@@ -95,6 +95,7 @@ namespace OpenViBEPlugins
 			{
 				rBoxPrototype.addInput("Value", OV_TypeId_StreamedMatrix);
 				rBoxPrototype.addInput("Rewards", OV_TypeId_Stimulations);
+				rBoxPrototype.addInput("Baseline Start Stimulation", OV_TypeId_Stimulations);
 
 				rBoxPrototype.addSetting("Color gradient", OV_TypeId_ColorGradient, "0:0,0,50; 25:0,100,100; 50:0,50,0; 75:100,100,0; 100:75,0,0");
 				rBoxPrototype.addSetting("Steps", OV_TypeId_Integer, "255");
